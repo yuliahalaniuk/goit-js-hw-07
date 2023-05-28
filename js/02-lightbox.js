@@ -13,6 +13,7 @@ function createGalleryEl(items) {
       `;
     })
     .join("");
+
   galleryEl.innerHTML = galleryItemCode;
   return galleryEl;
 }
