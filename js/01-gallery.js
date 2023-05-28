@@ -50,7 +50,6 @@ function openModal(url, descr) {
 
   const onEscKeyPress = (evt) => {
     if (evt.code === "Escape") {
-      console.log("hey");
       instance.close();
     }
   };
