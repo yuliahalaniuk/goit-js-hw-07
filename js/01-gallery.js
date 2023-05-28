@@ -35,9 +35,25 @@ function onGalleryItemClick(evt) {
 }
 
 function openModal(url, descr) {
-  const instance = basicLightbox.create(`
-    <img src="${url}" width="800" height="600" alt="${descr}">
-    `);
+  const modalImg = `
+     <img src="${url}" width="800" height="600" alt="${descr}">
+    `;
+
+  const instance = basicLightbox.create(modalImg, {
+    onShow: () => {
+      document.addEventListener("keydown", onEscKeyPress);
+    },
+    onClose: () => {
+      document.removeEventListener("keydown", onEscKeyPress);
+    },
+  });
+
+  const onEscKeyPress = (evt) => {
+    if (evt.code === "Escape") {
+      console.log("hey");
+      instance.close();
+    }
+  };
 
   instance.show();
 }
